@@ -43,8 +43,8 @@
 - [x] `TASK-029` デプロイ実行前提の準備（Bedrockアクセス有効化・AWS認証情報設定）とデプロイ本番
   - **デプロイ成功（2026-07-08）**：`https://drx8ehrhmih8b.cloudfront.net` で稼働。管理者ユーザー発行済み。途中2つの制限に対処（新規アカウントのLambdaメモリ512MB上限 → Aspectでキャップ）。詳細: [genai-web-deploy-record.md](../04_build/genai-web-deploy-record.md)
 - [ ] `TASK-030` 源内Webにログインし初期設定（チーム作成）＋ echo-observerを公開ホストしてExApp登録・実リクエスト観察（TASK-002の残り）
-- [ ] `TASK-002` 最小の自作AIアプリ（FastAPI）を作って源内Webに登録してみる
-  - 進捗（2026-07-08）：観察用リッチエコーアプリを実装し**ローカル単体検証まで完了**。残りは源内Web（AWS＝TASK-001）への登録＆実リクエスト捕捉。詳細: [echo-observer-local-verification.md](../04_build/echo-observer-local-verification.md) / 実装: [apps/echo-observer/](../../apps/echo-observer/)
+- [x] `TASK-002` 最小の自作AIアプリ（FastAPI）を作って源内Webに登録してみる
+  - **完了（2026-07-08）**：echo-observerを源内Webに登録し実リクエスト捕捉に成功。仕様書外フィールド（`sessionId`・`x-user-id`）を発見。詳細: [exapp-observation-2026-07-08.md](../04_build/exapp-observation-2026-07-08.md) / ローカル検証: [echo-observer-local-verification.md](../04_build/echo-observer-local-verification.md)
 - [ ] `TASK-003` OxigenAI（Lawsy Rust再実装）を実際に動かして源内プロトコル互換性を検証する
 
 ### LLM接続の検証（完了：2026-07-08）

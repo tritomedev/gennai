@@ -109,6 +109,38 @@
 
 ---
 
+## 【実機観察】源内が実際に送ってくる仕様外フィールド（2026-07-08 確認）
+
+実際に自作ExApp（echo-observer）を源内Webに登録し、実リクエストを捕捉して判明した、**公式仕様書に記載のないフィールド**。詳細: [exapp-observation-2026-07-08.md](../04_build/exapp-observation-2026-07-08.md)
+
+### body 直下に `sessionId` が付く（仕様書外）
+
+```json
+{
+  "inputs": { "question": "..." },
+  "sessionId": "a92b585e-cfab-4447-96d1-7bb024efdefc"
+}
+```
+
+- `inputs` と並んで **body直下** に会話セッションID（UUID）が来る。疑似チャット／会話追跡用と推測。
+
+### `x-user-id` ヘッダーが付く（仕様書外）
+
+- 例: `x-user-id: ZVKR-SY7prVL5b4l8WFb-Vcafge0uhQIvOJ4e-3CVeo`
+- ユーザーのHMAC識別子（源内コードの `UserIdentifierHmacKey`＝セッションハイジャック対策由来）。
+- **PIIを晒さずにExApp側でユーザーを識別できる** → RAGのユーザー別データ分離・利用制限などに活用可能。
+
+### その他の実機確認
+
+| 項目 | 実測値 | 備考 |
+|---|---|---|
+| `x-api-key` | 登録時のキーがそのまま届く | ExApp認証の仕組み（TASK-005） |
+| `user-agent` | `node` | 源内の呼び出しLambdaはNode.jsランタイム |
+| 送信元IP | AWS帯（例 13.158.55.104）・毎回変動 | VPC撤廃構成のため固定EIPなし（設計通り） |
+| `content-type` | `application/json` | — |
+
+---
+
 ## 3. レスポンス仕様（AIアプリ側が返すもの）
 
 ### 同期処理（シンプル）
