@@ -40,8 +40,9 @@
 - [ ] `TASK-028` ExApp用VPCのNAT対策を決めてデプロイ
   - 対策確定・実装済み（2026-07-08）：**①案（VPC撤廃）を実装しsynth実証**。NAT/VPC/EIP/エンドポイント全消滅、固定費¥17,000→¥600/月。**POC限定**（本番はVPC戻す）。詳細: [genai-web-aws-cost-breakdown.md](../03_setup/genai-web-aws-cost-breakdown.md)
   - 残り: 手動作業（コンソール）でBedrockモデルアクセス有効化＋AWS認証情報設定 → `cdk bootstrap` → `cdk deploy`
-- [ ] `TASK-029` デプロイ実行前提の準備（Bedrockアクセス有効化・AWS認証情報設定）とデプロイ本番
-  - リージョン方針（2026-07-08）：①でNAT撤廃したためUS化のコスト理由消失 → **東京(ap-northeast-1)維持**（データ日本国内・jp.anthropic.*そのまま）
+- [x] `TASK-029` デプロイ実行前提の準備（Bedrockアクセス有効化・AWS認証情報設定）とデプロイ本番
+  - **デプロイ成功（2026-07-08）**：`https://drx8ehrhmih8b.cloudfront.net` で稼働。管理者ユーザー発行済み。途中2つの制限に対処（新規アカウントのLambdaメモリ512MB上限 → Aspectでキャップ）。詳細: [genai-web-deploy-record.md](../04_build/genai-web-deploy-record.md)
+- [ ] `TASK-030` 源内Webにログインし初期設定（チーム作成）＋ echo-observerを公開ホストしてExApp登録・実リクエスト観察（TASK-002の残り）
 - [ ] `TASK-002` 最小の自作AIアプリ（FastAPI）を作って源内Webに登録してみる
   - 進捗（2026-07-08）：観察用リッチエコーアプリを実装し**ローカル単体検証まで完了**。残りは源内Web（AWS＝TASK-001）への登録＆実リクエスト捕捉。詳細: [echo-observer-local-verification.md](../04_build/echo-observer-local-verification.md) / 実装: [apps/echo-observer/](../../apps/echo-observer/)
 - [ ] `TASK-003` OxigenAI（Lawsy Rust再実装）を実際に動かして源内プロトコル互換性を検証する
@@ -101,4 +102,4 @@
 
 ## 次に使うID
 
-`TASK-030`
+`TASK-031`
