@@ -1,0 +1,25 @@
+name: Sync task-tracker.md to Issues
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/06_knowledge/task-tracker.md"
+  workflow_dispatch: {}
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run sync script
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/sync-tasks-to-issues.py
