@@ -1,0 +1,20 @@
+{
+  "inputs": {
+    "question": "源内のプロトコルってどうなってるの？",
+    "category": "law",
+    "agree": "apple,banana",
+    "count": 3,
+    "files": [
+      {
+        "key": "attachment",
+        "files": [
+          {
+            "filename": "資料.txt",
+            "content": "44GT44KM44Gv44OG44K544OI55So44Gu5re75LuY44OV44Kh44Kk44Or44Gn44GZ44CC"
+          }
+        ]
+      }
+    ],
+    "conversation_history": "ユーザー: こんにちは\nAI: こんにちは、何かお手伝いできますか？"
+  }
+}

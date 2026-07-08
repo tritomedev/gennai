@@ -29,7 +29,21 @@
 ### 環境構築系
 
 - [ ] `TASK-001` genai-webをローカル or VPSで動かしてみる（[ローカル開発環境](https://github.com/digital-go-jp/genai-web/blob/main/docs/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83.md)参照）
+  - 要件調査完了（2026-07-08）：**AWSデプロイ回避不能**（ローカルフロント起動もデプロイ済みバックエンド前提）。前提=AWSアカウント＋Bedrockモデルアクセス＋Node22/AWS CLI/CDK/jq。詳細: [genai-web-aws-requirements.md](../03_setup/genai-web-aws-requirements.md)
+  - 依存: TASK-025（AWS＋Bedrock準備）→ TASK-026（ツール導入）を先に潰す必要あり
+- [ ] `TASK-025` AWSアカウント準備 + Bedrockモデルアクセス有効化（ap-northeast-1／最低限 claude-haiku・nova-lite）
+  - 前提確認済み（2026-07-08）：会社アカウント利用可。Budgetsアラート/タグ/撤去の手順は [aws-cost-guardrails.md](../03_setup/aws-cost-guardrails.md)
+- [ ] `TASK-026` デプロイ用ツール導入（Node v22.22.2 / AWS CLI＋認証情報 / AWS CDK CLI / jq）
+  - 現状（2026-07-08）：jq✅ / npm✅ / Node⚠️v18.20.3（要v22へ）/ AWS CLI❌未導入 / CDK❌未導入
+- [x] `TASK-027` genai-webをフォーク&cloneし、最小コスト構成パラメータ（self-hosting-dev.ts）を配置してcdk synthでNAT有無を確認
+  - 完了（2026-07-08）：フォーク`tsucha-nsdq/genai-web`をclone、Node22.22.2導入、npm ci、パラメータ配置、synth成功。**NAT Gateway×2を検出（月約¥13,500）**。パラメータvalidationは通過。詳細: [genai-web-minimal-param-design.md](../03_setup/genai-web-minimal-param-design.md)
+- [ ] `TASK-028` ExApp用VPCのNAT対策を決めてデプロイ
+  - 対策確定・実装済み（2026-07-08）：**①案（VPC撤廃）を実装しsynth実証**。NAT/VPC/EIP/エンドポイント全消滅、固定費¥17,000→¥600/月。**POC限定**（本番はVPC戻す）。詳細: [genai-web-aws-cost-breakdown.md](../03_setup/genai-web-aws-cost-breakdown.md)
+  - 残り: 手動作業（コンソール）でBedrockモデルアクセス有効化＋AWS認証情報設定 → `cdk bootstrap` → `cdk deploy`
+- [ ] `TASK-029` デプロイ実行前提の準備（Bedrockアクセス有効化・AWS認証情報設定）とデプロイ本番
+  - リージョン方針（2026-07-08）：①でNAT撤廃したためUS化のコスト理由消失 → **東京(ap-northeast-1)維持**（データ日本国内・jp.anthropic.*そのまま）
 - [ ] `TASK-002` 最小の自作AIアプリ（FastAPI）を作って源内Webに登録してみる
+  - 進捗（2026-07-08）：観察用リッチエコーアプリを実装し**ローカル単体検証まで完了**。残りは源内Web（AWS＝TASK-001）への登録＆実リクエスト捕捉。詳細: [echo-observer-local-verification.md](../04_build/echo-observer-local-verification.md) / 実装: [apps/echo-observer/](../../apps/echo-observer/)
 - [ ] `TASK-003` OxigenAI（Lawsy Rust再実装）を実際に動かして源内プロトコル互換性を検証する
 
 ### LLM接続の検証（完了：2026-07-08）
@@ -87,4 +101,4 @@
 
 ## 次に使うID
 
-`TASK-025`
+`TASK-030`

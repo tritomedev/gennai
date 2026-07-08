@@ -1,0 +1,5 @@
+# echo-observer 観察ログ（自動生成）
+apps/echo-observer/requests.log
+
+# cloneした源内Webフォーク（独立リポジトリ。tsucha-nsdq/genai-web で管理）
+genai-web/

@@ -237,6 +237,6 @@ def ask(req: Request):
 ## TODO
 
 > **TODO:** 認証（x-api-key）の発行・管理方法を確認する
-> **TODO:** 非同期処理のタイムアウト設定を確認する
+> ~~**TODO:** 非同期処理のタイムアウト設定を確認する~~ → **判明**: 源内Web側の `cdk.json` に `exAppInvokeTimeoutSeconds: 29`。ExAppは**29秒以内に同期応答**が必要。超える処理は非同期ポーリング必須。詳細: [genai-web-aws-requirements.md](../03_setup/genai-web-aws-requirements.md)
 > **TODO:** ファイルのmax_sizeのデフォルト値を確認する
 > **TODO:** Lawsyの実装がこのプロトコルにどう準拠しているか確認する（次の調査へ）
