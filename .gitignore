@@ -3,3 +3,7 @@ apps/echo-observer/requests.log
 
 # cloneした源内Webフォーク（独立リポジトリ。tsucha-nsdq/genai-web で管理）
 genai-web/
+
+# Python キャッシュ
+__pycache__/
+*.pyc
