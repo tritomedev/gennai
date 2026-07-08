@@ -112,7 +112,7 @@ def search_books(req: dict):
 | 選択肢 | 特徴 | 向いているケース |
 |---|---|---|
 | **pgvector** | PostgreSQL拡張、シンプル | 小〜中規模、PostgreSQL既存環境 |
-| **Qdrant** | 高性能・Rust製、REST API | 中〜大規模、Proxmox環境 |
+| **Qdrant** | 高性能・Rust製、REST API | 中〜大規模、VPS環境 |
 | **Chroma** | Python親和性高い、軽量 | 試作・小規模 |
 | **BigQuery** | Lawsyと同じ構成 | GCP環境 |
 
@@ -156,10 +156,10 @@ def search_books(req: dict):
 
 ---
 
-## Proxmox環境での推奨構成
+## VPS環境での推奨構成
 
 ```
-Proxmox LXC/VM
+VPS（さくらのVPS等）
 ├── genai-web（Docker or AWS）
 │     └── 蔵書RAGアプリをGUIから登録
 │
@@ -197,5 +197,5 @@ Proxmox LXC/VM
 > **TODO:** チャンク分割の最適サイズを検証する（書籍の場合）
 > **TODO:** 出典（書籍名・ページ数）の表示フォーマットを決める
 > **TODO:** 著作権・利用規約の確認（アーカイブ蔵書のデジタル利用条件）
-> **TODO:** Proxmox環境でのgenai-webのセルフホスト可否を検証する
+> **TODO:** VPS環境でのgenai-webのセルフホスト可否を検証する
 > **TODO:** Ollamaでの回答品質と外部LLMの品質差を比較検証する

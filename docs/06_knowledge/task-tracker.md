@@ -28,7 +28,7 @@
 
 ### 環境構築系
 
-- [ ] `TASK-001` genai-webをローカル or Proxmoxで動かしてみる（[ローカル開発環境](https://github.com/digital-go-jp/genai-web/blob/main/docs/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83.md)参照）
+- [ ] `TASK-001` genai-webをローカル or VPSで動かしてみる（[ローカル開発環境](https://github.com/digital-go-jp/genai-web/blob/main/docs/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83.md)参照）
 - [ ] `TASK-002` 最小の自作AIアプリ（FastAPI）を作って源内Webに登録してみる
 - [ ] `TASK-003` OxigenAI（Lawsy Rust再実装）を実際に動かして源内プロトコル互換性を検証する
 
@@ -79,7 +79,7 @@
 | 検証項目 | 更新先ドキュメント |
 |---|---|
 | LLM接続共有の可否（TASK-004） | `docs/01_overview/gennai-value-and-limits.md` |
-| genai-webのローカル/Proxmox動作可否（TASK-001） | `docs/03_setup/` 配下に新規ファイル作成 |
+| genai-webのローカル/VPS動作可否（TASK-001） | `docs/03_setup/` 配下に新規ファイル作成 |
 | 自作AIアプリの動作確認結果（TASK-002） | `docs/04_build/` 配下に新規ファイル作成 |
 | RAGアプリ試作の結果（TASK-006〜009） | `docs/05_customization/usecase-library-rag.md` |
 

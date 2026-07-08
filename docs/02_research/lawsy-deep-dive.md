@@ -175,18 +175,18 @@ oxigenai serve  # localhost:8080 で起動
 
 ---
 
-## Proxmox環境での展開可能性
+## VPS環境での展開可能性
 
 Lawsyの構成を分析すると、**GCPなしでも動かせる可能性がある**。
 
-| コンポーネント | GCP版 | Proxmox版（代替案） |
+| コンポーネント | GCP版 | VPS版（代替案） |
 |---|---|---|
 | LLM | Vertex AI Gemini | Ollama + ローカルLLM |
 | ベクトルDB | BigQuery | pgvector / Qdrant / Chroma |
 | 法令データ | e-Gov API | e-Gov APIから取得してローカル保存 |
 | API サーバー | Cloud Run / GCE | コンテナ（Docker/LXC） |
 
-**結論:** GCP依存を剥がしてProxmox上のコンテナで動かすことは技術的に可能。
+**結論:** GCP依存を剥がしてVPS上のコンテナで動かすことは技術的に可能。
 
 ---
 
@@ -196,4 +196,4 @@ Lawsyの構成を分析すると、**GCPなしでも動かせる可能性があ�
 > **TODO:** e-Gov法令APIの仕様を調査する（データ取得フロー）
 > **TODO:** BigQueryのembedding生成方法を確認する（Vertex AI Embeddings API？）
 > **TODO:** OxigenAIをローカルで動かして源内プロトコル互換性を検証する
-> **TODO:** pgvector + OllamaでLawsy相当のRAGをProxmox上に構築できるか検証する
+> **TODO:** pgvector + OllamaでLawsy相当のRAGをVPS上に構築できるか検証する

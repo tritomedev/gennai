@@ -62,7 +62,7 @@ cp self-hosting-template.ts self-hosting-dev.ts
 npm -w packages/cdk run cdk -- deploy --all --require-approval never -c env=-selfHostingDev
 ```
 
-> **⚠️ Proxmox環境への注意:** genai-webはAWS前提の設計のため、Proxmoxに直接移植するのはコストが高い。現実的なアプローチは後述。
+> **⚠️ VPS環境への注意:** genai-webはAWS前提の設計のため、VPSに直接移植するのはコストが高い。現実的なアプローチは後述。
 
 ---
 
@@ -98,15 +98,15 @@ genai-ai-api（AIアプリ群）
 
 ---
 
-## Q. Proxmox環境でどう活かすか？
+## Q. VPS環境でどう活かすか？
 
-genai-webをそのままProxmoxに移植するのはAWS依存が強くコストが高い。現実的なアプローチは以下の3つ。
+genai-webをそのままVPSに移植するのはAWS依存が強くコストが高い。現実的なアプローチは以下の3つ。
 
 | アプローチ | 内容 | 難易度 |
 |---|---|---|
-| **A: AIアプリ単体をProxmoxで動かす** | genai-ai-api（Lawsy・RAG等）をProxmox上のコンテナで動かす | ★★☆ |
-| **B: WebはAWS・AIアプリはProxmox** | genai-webはAWS上、ProxmoxはAIアプリのホスティングに使う | ★★☆ |
-| **C: 源内プロトコル準拠の自作アプリ** | プロトコルに準拠した独自AIアプリを自作してProxmoxで動かす | ★★★ |
+| **A: AIアプリ単体をVPSで動かす** | genai-ai-api（Lawsy・RAG等）をVPS上のコンテナで動かす | ★★☆ |
+| **B: WebはAWS・AIアプリはVPS** | genai-webはAWS上、VPSはAIアプリのホスティングに使う | ★★☆ |
+| **C: 源内プロトコル準拠の自作アプリ** | プロトコルに準拠した独自AIアプリを自作してVPSで動かす | ★★★ |
 
 > **TODO:** 各アプローチの詳細な実現可能性調査 → `docs/05_customization/deployment-approaches.md` に追記予定
 

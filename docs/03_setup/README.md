@@ -6,4 +6,4 @@
 
 - `prerequisites.md` - 事前準備（必要ツール・アカウント等）
 - `local-dev.md` - ローカル開発環境の構築手順
-- `proxmox-deploy.md` - Proxmox環境へのデプロイ手順
+- `vps-deploy.md` - VPS（さくらのVPS等）環境へのデプロイ手順

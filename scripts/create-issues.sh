@@ -22,7 +22,7 @@ echo "=== 実機検証タスク（優先度高）を作成します ==="
 
 gh issue create \
   --repo "$REPO" \
-  --title "genai-webをローカル or Proxmoxで動かしてみる" \
+  --title "genai-webをローカル or VPSで動かしてみる" \
   --body "ローカル開発環境の手順を確認しながら実際に動かす。
 
 参照: https://github.com/digital-go-jp/genai-web/blob/main/docs/ローカル開発環境.md
@@ -75,7 +75,7 @@ gh issue create \
 gh issue create \
   --repo "$REPO" \
   --title "Ollama + Qwen2.5（またはLlama 3.1）でローカルLLM環境を構築する" \
-  --body "Proxmox環境でのローカルLLM運用の実現可能性を検証する。
+  --body "VPS環境でのローカルLLM運用の実現可能性を検証する。
 
 ## 完了条件
 - [ ] Ollamaをインストールし、モデルを起動
