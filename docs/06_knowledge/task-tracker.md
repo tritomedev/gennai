@@ -32,10 +32,10 @@
 - [ ] `TASK-002` 最小の自作AIアプリ（FastAPI）を作って源内Webに登録してみる
 - [ ] `TASK-003` OxigenAI（Lawsy Rust再実装）を実際に動かして源内プロトコル互換性を検証する
 
-### LLM接続の検証（最優先・議論より）
+### LLM接続の検証（完了：2026-07-08）
 
-- [ ] `TASK-004` 【最優先】源内Web内蔵チャットのLLM接続を自作アプリと共有できるか確認する
-  - 関連: [gennai-value-and-limits.md](../01_overview/gennai-value-and-limits.md)
+- [x] `TASK-004` 【最優先】源内Web内蔵チャットのLLM接続を自作アプリと共有できるか確認する
+  - 結論：共有不可（実機検証記事で確定）。詳細: [verified-findings-2026-07-08.md](../02_research/verified-findings-2026-07-08.md)
 - [ ] `TASK-005` 自作AIアプリの認証（x-api-key）の発行・管理方法を実際に確認する
 
 ### RAGアプリ試作系
@@ -63,8 +63,10 @@
 
 - [ ] `TASK-017` e-Gov法令APIの仕様調査（データ取得フロー）
 - [ ] `TASK-018` BigQueryのembedding生成方法の調査（Vertex AI Embeddings API？）
-- [ ] `TASK-019` Lawsy公式READMEの直接確認（GitHub bot制限の回避方法を探す）
-- [ ] `TASK-020` tsuzumi 2のオンプレ版の料金・調達方法
+- [x] `TASK-019` Lawsy公式READMEの直接確認（GitHub bot制限の回避方法を探す）
+  - 結論：直接取得は不可のままだが、実機検証記事で3テンプレートの内部構成を代替確認。詳細: [verified-findings-2026-07-08.md](../02_research/verified-findings-2026-07-08.md)
+- [x] `TASK-020` tsuzumi 2のオンプレ版の料金・調達方法
+  - 結論：個人向け提供なし、法人向け個別商談制。詳細: [verified-findings-2026-07-08.md](../02_research/verified-findings-2026-07-08.md)
 - [ ] `TASK-021` 2026年8月の国内LLM試用開始後の評価結果を追う
 - [ ] `TASK-022` 蔵書のOCR精度確保の方法論調査
 - [ ] `TASK-023` チャンク分割の最適サイズ調査（書籍データの場合）
