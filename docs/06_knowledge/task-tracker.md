@@ -28,7 +28,8 @@
 
 ### 環境構築系
 
-- [ ] `TASK-001` genai-webをローカル or VPSで動かしてみる（[ローカル開発環境](https://github.com/digital-go-jp/genai-web/blob/main/docs/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83.md)参照）
+- [x] `TASK-001` genai-webをローカル or VPSで動かしてみる（[ローカル開発環境](https://github.com/digital-go-jp/genai-web/blob/main/docs/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83.md)参照）
+  - **完了（2026-07 AWS東京にデプロイ。[../04_build/genai-web-deploy-record.md](../04_build/genai-web-deploy-record.md)）**
   - 要件調査完了（2026-07-08）：**AWSデプロイ回避不能**（ローカルフロント起動もデプロイ済みバックエンド前提）。前提=AWSアカウント＋Bedrockモデルアクセス＋Node22/AWS CLI/CDK/jq。詳細: [genai-web-aws-requirements.md](../03_setup/genai-web-aws-requirements.md)
   - 依存: TASK-025（AWS＋Bedrock準備）→ TASK-026（ツール導入）を先に潰す必要あり
 - [ ] `TASK-025` AWSアカウント準備 + Bedrockモデルアクセス有効化（ap-northeast-1／最低限 claude-haiku・nova-lite）

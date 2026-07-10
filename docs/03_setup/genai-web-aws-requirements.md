@@ -1,7 +1,7 @@
 # genai-web デプロイ要件・手順の洗い出し（TASK-001 事前調査）
 
 - **調査日:** 2026-07-08
-- **ステータス:** 一次情報（公式docs / cdk.json）による洗い出し完了 / 実デプロイは未実施
+- **ステータス:** 一次情報（公式docs / cdk.json）による洗い出し完了 / **実デプロイ完了（2026-07。[../04_build/genai-web-deploy-record.md](../04_build/genai-web-deploy-record.md) 参照）**
 - **調査元（すべて公式リポジトリ直取得）:**
   - `docs/事前準備.md` / `docs/デプロイ手順.md` / `docs/ローカル開発環境.md` / `README.md`
   - `packages/cdk/cdk.json` / `.node-version` / `packages/cdk/env-parameters/self-hosting-template.ts`
@@ -46,6 +46,7 @@
   - `jp.anthropic.claude-haiku-4-5-20251001-v1:0`
   - `amazon.nova-lite-v1:0`（テキスト） / `amazon.nova-canvas-v1:0`（画像生成）
   - → これらを **Bedrockコンソールで事前にアクセス申請/有効化**しておく必要がある
+  - ※**注記:** 単価の高い `opus-4-8` はコスト上、実デプロイ検証では haiku / nova / sonnet に絞って有効化した（上記記載自体は公式パラメータの参考として残す）
 - 認証は **Cognito**（`selfSignUpEnabled: false` がデフォルト＝管理者がユーザー発行）
 
 ---
@@ -89,6 +90,7 @@ npm -w packages/cdk run cdk -- deploy --all --require-approval never -c env=-sel
 - CloudFront + S3 静的ホスティング（フロント）
 - API Gateway + Lambda（バックエンド、サーバーレス）
 - 基本サーバーレス構成のため **常時起動の高額リソース（RDS/NAT Gateway等）は基本なし**の想定
+  - ※**訂正:** 実際にはExApp呼び出し用にNAT Gateway×2が生成された（VPC撤廃で対処）。[genai-web-aws-cost-breakdown.md](./genai-web-aws-cost-breakdown.md) 参照
 
 ### 費用の見立て
 

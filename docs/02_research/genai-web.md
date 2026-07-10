@@ -3,7 +3,7 @@
 - **調査日:** 2026-07-08
 - **対象リポジトリ:** https://github.com/digital-go-jp/genai-web
 - **最新リリース:** v1.0.3（2026年4月24日）
-- **ステータス:** 調査中
+- **ステータス:** 調査完了（2026-07 AWS実デプロイまで実施）
 
 ---
 
@@ -80,8 +80,8 @@
 
 ## 調査が必要な項目
 
-> **TODO:** `packages/` 以下のディレクトリ構成を調査する
-> **TODO:** ローカル開発環境の手順を確認してdocs/03_setup/に記録する
-> **TODO:** デプロイ手順を確認してVPS環境での差分を整理する
-> **TODO:** AIアプリAPI仕様の詳細を確認する
+> ~~**TODO:** `packages/` 以下のディレクトリ構成を調査する~~ → ✅完了（cdk/web等のモノレポ構成を確認。[../03_setup/genai-web-aws-requirements.md](../03_setup/genai-web-aws-requirements.md)）
+> ~~**TODO:** ローカル開発環境の手順を確認してdocs/03_setup/に記録する~~ → ✅完了（[../03_setup/genai-web-aws-requirements.md](../03_setup/genai-web-aws-requirements.md)。ローカルフロント起動もAWSデプロイ前提と判明）
+> ~~**TODO:** デプロイ手順を確認してVPS環境での差分を整理する~~ → ✅完了（AWS実デプロイ実施。[../04_build/genai-web-deploy-record.md](../04_build/genai-web-deploy-record.md)。VPS完結は本体では不可＝ExApp側の話）
+> ~~**TODO:** AIアプリAPI仕様の詳細を確認する~~ → ✅完了（[../02_research/ai-app-api-spec.md](./ai-app-api-spec.md)）
 > **TODO:** ASL対象ファイルの確認

@@ -1,7 +1,7 @@
 # AWSコスト事故防止ガードレール（デプロイ前設定）
 
 - **作成日:** 2026-07-08
-- **ステータス:** 手順まとめ（実設定は未実施）
+- **ステータス:** 手順まとめ＋**実設定済み（2026-07。Budgets設定済み・genai-web を AWS 東京へデプロイ済み。[../04_build/genai-web-deploy-record.md](../04_build/genai-web-deploy-record.md) 参照）**
 - **対象:** 会社AWSアカウントで genai-web をデプロイする前に入れておく安全策
 - **目的:** 想定外課金の事故を防ぐ。特に RAG系（Kendra/OpenSearch）の高額固定費と、Bedrock 使いすぎを早期検知する
 
@@ -12,6 +12,7 @@
 - 固定費：ほぼ¥0〜¥1,500/月（GenUベースでサーバーレス中心）
 - 従量：主に **Bedrock のトークン代**（haiku/nova中心なら検証で月¥数百）
 - **地雷**：RAG系オプション（Kendra ≈¥12万/月、OpenSearch Serverless ≈¥5万/月〜）を有効化しないこと
+  - ※**注記:** 源内コア（genai-web）には Kendra/OpenSearch のパラメータ自体が存在しないため、源内本体ではこれらの費用は発生しない。RAG は ExApp 側の責務であり、ExApp 側で自前にそうした基盤を足す場合の一般的注意として読むこと
 - 詳細: [genai-web-aws-requirements.md](./genai-web-aws-requirements.md)
 
 ---

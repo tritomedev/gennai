@@ -8,6 +8,10 @@
 
 得られた知見はドキュメントとして蓄積し、同じく源内に取り組む方々との情報共有を意識して整備しています。
 
+> 🚀 **はじめて読む方へ →** [docs/01_overview/START-HERE.md](./docs/01_overview/START-HERE.md)（源内とは・全体構成・現状・狙いを1枚で）
+
+**現状（2026-07）:** 源内WebをAWS（東京）に実デプロイして稼働確認、自作ExApp（echo-observer）を登録して源内の実挙動まで観察済み。詳細は [docs/04_build/](./docs/04_build/)。
+
 ## 🗂️ ドキュメント構成
 
 | ディレクトリ | 内容 |
@@ -34,7 +38,9 @@
 
 デジタル庁が開発・運用する生成AI利用環境。2026年度中に全府省庁約18万人の政府職員への展開を目指す国産ガバメントAIプラットフォームで、2026年4月にMITライセンスでOSSとして公開されました。
 
-詳細 → [docs/01_overview/what-is-gennai.md](./docs/01_overview/what-is-gennai.md)
+**重要な性質：源内はAIそのものではなく「指揮者（オーケストレーター）」です。** LLMも業務知識も持たず、内蔵チャットはLLM（Amazon Bedrock）を、業務アプリはExApp（外部AIアプリ）を呼び出して束ねます。組織固有の賢い処理は全てExApp側が担います。
+
+詳細 → [docs/01_overview/START-HERE.md](./docs/01_overview/START-HERE.md) / [docs/01_overview/what-is-gennai.md](./docs/01_overview/what-is-gennai.md)
 
 ## 📚 参考リンク
 

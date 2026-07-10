@@ -4,6 +4,8 @@
 - **対象:** `genai-ai-api/google-cloud/lawsy-custom-bq`
 - **ステータス:** 完了（OxigenAIの再実装から逆解析）
 
+> ⚠️ **信頼性の注意:** 本ドキュメントの内部構造・環境変数・モデルID・処理パイプラインは、Lawsy公式ではなく **非公式のRust再実装「OxigenAI」からの逆解析による推定**を多く含む（公式READMEはbot制限で直接未取得）。「Gemini＋BigQueryベクトル検索でe-Gov法令を参照する法令RAG」という骨子は確度が高いが、SMTソルバーによる矛盾検出・具体的な環境変数・`gemini-2.5-flash`等の細部は**未検証の推定**として扱うこと。実装時は必ず公式リポジトリ（`genai-ai-api/google-cloud/lawsy-custom-bq`）の一次情報で裏取りする。
+
 ---
 
 ## 概要

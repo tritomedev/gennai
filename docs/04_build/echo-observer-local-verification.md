@@ -1,7 +1,7 @@
 # echo-observer ローカル単体検証（TASK-002 前半）
 
 - **検証日:** 2026-07-08
-- **ステータス:** ローカル検証完了 / 源内Web登録は未実施（AWS＝TASK-001 待ち）
+- **ステータス:** ローカル検証完了。**その後 源内Webへの登録・実リクエスト捕捉まで完了**（[exapp-observation-2026-07-08.md](./exapp-observation-2026-07-08.md) 参照）
 - **対象:** [apps/echo-observer/](../../apps/echo-observer/) — 源内 観察用リッチエコーアプリ
 - **目的:** 源内Webに繋ぐ前に、自作AIアプリ側で源内プロトコルの受け口を作り、想定外リクエストでも壊れず観察できることを確認する
 
@@ -77,5 +77,4 @@ file の Base64 本体は返さず先頭48字＋実サイズのみ（UI崩壊・
 
 ## 次のステップ
 
-TASK-002 の残り＝**源内Web（AWS）に登録して実リクエストをキャプチャする**。
-これには TASK-001（genai-web をローカル/VPS/AWS で起動）が前提。次はそちらへ。
+✅**完了済み:** 源内Web（AWS。`https://drx8ehrhmih8b.cloudfront.net` で稼働）へ echo-observer を登録し、実リクエストのキャプチャに成功した。仕様書外フィールド（`sessionId`・`x-user-id`）も発見。詳細は [exapp-observation-2026-07-08.md](./exapp-observation-2026-07-08.md)。前提だった TASK-001（genai-web の起動）も AWS デプロイで完了済み（[genai-web-deploy-record.md](./genai-web-deploy-record.md)）。
