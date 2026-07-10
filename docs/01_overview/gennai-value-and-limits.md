@@ -187,6 +187,33 @@ LLM本体は含まないため、**LLMの調達・コスト設計は常に別途
 | 国内LLM（tsuzumi等） | 調達が必要 | 国内データセンター | 行政・機密情報を扱う |
 | Ollama（ローカル） | ほぼ無料 | 完全ローカル | さくらのVPS等の自前環境 |
 
+### ExAppのLLMは Amazon Bedrock で足りるか？（判断ガイド）
+
+**結論：一般的な行政案件・POC・AWS前提なら Bedrock で足りる（第一候補）。** 理由：
+
+- 源内本体がBedrockを使っており土台が揃う（AWS一箇所・IAM・請求も一元）
+- モデルの品揃えが十分（Claude / Nova に加え Llama・Mistral・Cohere 等）
+- 東京リージョン（`jp.`プロファイル）で**データ国内保持**できる
+- **埋め込み(embedding)モデルもBedrockにある**（Titan / Cohere Embed）→ RAGのベクトル化と回答生成が一箇所で完結
+
+> 💡 **Bedrockは単なるAPI**なので、ExAppがAWS上になくても（GCP/VPS等でも）AWS認証情報があれば呼べる。**ExAppの置き場所に縛られない。**
+
+**Bedrockで"足りない"例外は2つ：**
+
+| ケース | 理由 | 代替 |
+|---|---|---|
+| 完全ローカル/オンプレ/エアギャップ（外部に一切出さない）要件 | Bedrockは外部API呼び出しになる | Ollama＋ローカルLLM |
+| 国産LLM必須（tsuzumi等）の調達縛り | Bedrockにtsuzumiはない | 別途調達（法人個別商談制。[結論⑥](../../CLAUDE.md)） |
+
+**判断フロー：**
+
+```text
+ExApp／LLMの要件は？
+├─ ネット接続OK ＆ 東京リージョンで十分  → ★Bedrock（デフォルト・最有力）
+├─ 外部に一切出さないオンプレ/エアギャップ → Ollama＋ローカルLLM
+└─ 国産LLM(tsuzumi)必須の調達縛り        → 別途調達（Bedrock不可）
+```
+
 ### 図書館ユースケースでの現実解
 
 **Ollama + ローカルLLM** が最も現実的。
