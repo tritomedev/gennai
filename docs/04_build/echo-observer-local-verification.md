@@ -1,5 +1,8 @@
 # echo-observer ローカル単体検証（TASK-002 前半）
 
+> 環境固有の値は `<...>` のプレースホルダにしている。実値は内部管理の `private/environment.md` を参照。
+
+
 - **検証日:** 2026-07-08
 - **ステータス:** ローカル検証完了。**その後 源内Webへの登録・実リクエスト捕捉まで完了**（[exapp-observation-2026-07-08.md](./exapp-observation-2026-07-08.md) 参照）
 - **対象:** [apps/echo-observer/](../../apps/echo-observer/) — 源内 観察用リッチエコーアプリ
@@ -77,4 +80,4 @@ file の Base64 本体は返さず先頭48字＋実サイズのみ（UI崩壊・
 
 ## 次のステップ
 
-✅**完了済み:** 源内Web（AWS。`https://drx8ehrhmih8b.cloudfront.net` で稼働）へ echo-observer を登録し、実リクエストのキャプチャに成功した。仕様書外フィールド（`sessionId`・`x-user-id`）も発見。詳細は [exapp-observation-2026-07-08.md](./exapp-observation-2026-07-08.md)。前提だった TASK-001（genai-web の起動）も AWS デプロイで完了済み（[genai-web-deploy-record.md](./genai-web-deploy-record.md)）。
+✅**完了済み:** 源内Web（AWS。`<OLD_CLOUDFRONT_URL>` で稼働）へ echo-observer を登録し、実リクエストのキャプチャに成功した。仕様書外フィールド（`sessionId`・`x-user-id`）も発見。詳細は [exapp-observation-2026-07-08.md](./exapp-observation-2026-07-08.md)。前提だった TASK-001（genai-web の起動）も AWS デプロイで完了済み（[genai-web-deploy-record.md](./genai-web-deploy-record.md)）。

@@ -1,5 +1,8 @@
 # AWSコスト事故防止ガードレール（デプロイ前設定）
 
+> 環境固有の値は `<...>` のプレースホルダにしている。実値は内部管理の `private/environment.md` を参照。
+
+
 - **作成日:** 2026-07-08
 - **ステータス:** 手順まとめ＋**実設定済み（2026-07。Budgets設定済み・genai-web を AWS 東京へデプロイ済み。[../04_build/genai-web-deploy-record.md](../04_build/genai-web-deploy-record.md) 参照）**
 - **対象:** 会社AWSアカウントで genai-web をデプロイする前に入れておく安全策
@@ -54,7 +57,10 @@ aws budgets create-budget \
 }
 ```
 
-> **Note:** `Unit` はアカウントの請求通貨に合わせる（USD建て請求なら `"20","USD"` 等）。
+> **Note（2026-08-24 実測で判明）:** CLI の `create-budget` では **`JPY` は指定できない**。
+> `InvalidParameterException: JPY is not in the supported unit set: [USD]` になる。
+> **USD建てで指定すること**（¥3,000相当なら `"Amount": "20", "Unit": "USD"`）。
+> 新アカウント <AWS_ACCOUNT_ID> では `gennai-monthly-20usd`（実績50% / 実績100% / 予測100% の3通知）を設定済み。
 
 ---
 
