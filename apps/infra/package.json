@@ -1,0 +1,19 @@
+{
+  "name": "gennai-exapps-infra",
+  "version": "0.1.0",
+  "private": true,
+  "description": "源内 Ex-App（自作AIアプリ）を AWS Lambda + Function URL で公開するCDKスタック",
+  "scripts": {
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "aws-cdk": "^2.1127.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.6.3"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.216.0",
+    "constructs": "^10.4.2"
+  }
+}

@@ -1,0 +1,7 @@
+# 公開ホスト時代の遺物（現在はSecrets Manager管理）
+.apikey
+.tunnel_url
+
+# Python キャッシュ
+__pycache__/
+*.pyc

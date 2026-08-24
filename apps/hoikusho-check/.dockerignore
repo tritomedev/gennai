@@ -1,0 +1,6 @@
+.venv
+__pycache__
+data
+.apikey
+.tunnel_url
+*.md

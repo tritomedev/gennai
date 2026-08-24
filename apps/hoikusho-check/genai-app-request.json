@@ -1,0 +1,137 @@
+{
+  "message": {
+    "title": "AIと会話して業務を進める",
+    "desc": "保育所の申込みについて相談したいことを入力してください（例：就労証明書はいつ発行されたものが必要ですか？）。申込書のチェックだけしたい場合は空のままで構いません。\n※ このデモは全員が同じアカウントを共有します。実在の氏名・住所などの個人情報は入力しないでください。",
+    "type": "textarea",
+    "required": false
+  },
+  "form_images": {
+    "title": "申込書・添付書類の画像",
+    "desc": "申込書や就労証明書をスマホで撮った画像をアップロードするとOCRで読み取ります（jpg/png、最大5枚）。\n※ このデモは全員が同じアカウントを共有します。実在の氏名・住所などの個人情報は入力しないでください。",
+    "type": "file",
+    "required": false,
+    "multiple": true,
+    "max_file_count": 5,
+    "accept": "image/*",
+    "max_size": "5MB"
+  },
+  "jukyo": {
+    "title": "住まいと通勤",
+    "desc": "港区内在住かどうかで調整指数が変わります。",
+    "type": "select",
+    "required": false,
+    "items": [
+      {
+        "title": "港区内に住んでいる",
+        "value": "ku_nai"
+      },
+      {
+        "title": "港区外に住んでいて、港区内に通勤している",
+        "value": "ku_gai_tsukin"
+      },
+      {
+        "title": "港区外に住んでいて、通勤先も港区外",
+        "value": "ku_gai"
+      },
+      {
+        "title": "これから港区に転入する予定",
+        "value": "tennyu"
+      }
+    ]
+  },
+  "setai": {
+    "title": "世帯の状況（当てはまるものすべて）",
+    "type": "checkbox",
+    "required": false,
+    "items": [
+      {
+        "title": "ひとり親世帯（またはひとり親になった）",
+        "value": "hitorioya"
+      },
+      {
+        "title": "多胎児（双子・三つ子）の申込み",
+        "value": "tashji"
+      },
+      {
+        "title": "きょうだいが同じ園に在園中／同じ園に同時申込み",
+        "value": "kyodai_doen"
+      },
+      {
+        "title": "生活保護を受けている",
+        "value": "seikatsu_hogo"
+      },
+      {
+        "title": "申込児または同居のきょうだいに障害がある",
+        "value": "child_shogai"
+      },
+      {
+        "title": "保育士・看護師として就労が内定している",
+        "value": "hoikushi_naitei"
+      },
+      {
+        "title": "保育料を3か月以上滞納している",
+        "value": "taino_3month"
+      }
+    ]
+  },
+  "prepared_docs": {
+    "title": "用意した書類（当てはまるものすべて）",
+    "type": "checkbox",
+    "required": false,
+    "items": [
+      {
+        "title": "入所申込書",
+        "value": "入所申込書"
+      },
+      {
+        "title": "確認書",
+        "value": "確認書"
+      },
+      {
+        "title": "本人確認書類",
+        "value": "本人確認書類"
+      },
+      {
+        "title": "マイナンバー確認書類",
+        "value": "マイナンバー確認書類"
+      },
+      {
+        "title": "父の就労証明書",
+        "value": "父の就労証明書"
+      },
+      {
+        "title": "母の就労証明書",
+        "value": "母の就労証明書"
+      },
+      {
+        "title": "母子健康手帳のコピー",
+        "value": "母子健康手帳のコピー"
+      },
+      {
+        "title": "診断書",
+        "value": "診断書"
+      },
+      {
+        "title": "障害者手帳のコピー",
+        "value": "障害者手帳のコピー"
+      },
+      {
+        "title": "ハローワーク受付票",
+        "value": "ハローワーク受付票"
+      },
+      {
+        "title": "就学（予定）証明書",
+        "value": "就学（予定）証明書"
+      },
+      {
+        "title": "戸籍謄本",
+        "value": "戸籍謄本"
+      }
+    ]
+  },
+  "conversation_history": {
+    "title": "会話履歴",
+    "type": "textarea",
+    "required": false
+  }
+}
