@@ -105,7 +105,7 @@
 - [x] `TASK-042` 源内Web本体を新アカウント（<AWS_ACCOUNT_ID>）にデプロイする。旧アカウント <OLD_AWS_ACCOUNT_ID> からの移行
   - **完了（2026-08-22）**：`https://tritome-gennai-sample.com` で稼働（CloudFront 200）。所要8分20秒。追加で必要だったのは us-east-1 の bootstrap のみ。**NAT Gateway 0件・追加VPC 0件**を実測で確認（VPC撤廃の改変は正常に機能）。記録: [../04_build/genai-web-deploy-record.md](../04_build/genai-web-deploy-record.md)
   - **知見**：`cdk.out` は消さずに書き足されるため、`bootstrap` 時（`-c env` 無し＝既定パラメータ）に生成された**VPCありのテンプレートが残骸として残る**。ワイルドカードでgrepすると誤検出する。検査前に `rm -rf cdk.out` するか、対象テンプレートをファイル名で特定すること。
-  - **残り**：Cognito管理者作成／チーム作成→ExApp登録／Budgets設定／Lambdaメモリ緩和申請／旧アカウントの撤去判断
+  - **残り**：Cognito管理者作成／チーム作成→ExApp登録／Budgets設定／Lambdaメモリ緩和申請
 - [x] `TASK-044` 一般公開デモ用に、メール登録なしで使える共有パスワードログインを実装する（管理者モードとサンプル参照モードの分離）
   - **完了（2026-08-24）**：サンプル参照は `/` でパスワードのみ、管理者は `/admin-login` で通常のメール＋パスワード。CDKパラメータ `sharedLoginUsername` を空にすれば通常のサインイン画面に戻る。Cognitoユーザーは `--message-action SUPPRESS` ＋ `--permanent` で**メール0通**で発行できる。設計・手順: [../05_customization/shared-login-for-public-demo.md](../05_customization/shared-login-for-public-demo.md)
   - **注意**：共有モードは `<Authenticator>` ごと差し替わるため、管理者用の入口を別パスで確保しないとチーム管理・Ex-App登録ができなくなる。
@@ -130,6 +130,12 @@
   - **完了（2026-08-24）**：Route 53 で **`tritome-gennai-sample.com`** を取得（$16/年・自動更新ON）。ホストゾーン `<HOSTED_ZONE_ID>` は取得時に自動作成された。**apex と www の両方で HTTPS 200 を実測**（証明書検証エラーなし、有効期限 2027-03-09・ACMが自動更新）。
   - **本家CDKは apex 非対応だったため3箇所を改変**：証明書・CloudFrontの代替ドメイン・Aレコードのいずれも `hostName` 必須で `${hostName}.${domainName}` 固定だった。`hostName: ''` でルートドメイン運用できるようにし、`www` もSANとAレコードでカバー。**apexにCNAMEは張れないが Route 53 の Alias なら張れる**点を利用。
   - **費用**：ドメイン $16/年 ＋ ホストゾーン $0.50/月 ＝ **年約¥3,300**。**SSL証明書は $0**。
+- [x] `TASK-051` 旧アカウント `<OLD_AWS_ACCOUNT_ID>`（なうろーでぃんぐ）のリソースを撤去する
+  - **完了（2026-08-25）**：`cdk destroy --all` で源内Web本体とAppDomainStackを削除。**Lambda 50／CloudFront 1／DynamoDB 4／Cognito 1／S3 10 がすべて0件になったことを実測で確認**。
+  - **想定と違った点**：`RemovalPolicy.RETAIN` のリソース（S3・DynamoDB・Cognito）が残ると見込んでいたが、**残骸は出なかった**。中身の入ったS3バケットが5つあったため手動での空にする作業が必要と考えていたが、CDK側が処理してくれた。
+  - `CDKToolkit`（東京・バージニア）は**意図的に残している**（アセット用S3に57オブジェクト。月数円のため）。完全撤収する場合はバケットを空にしてからスタックを削除する。
+  - 旧アカウントの2026年8月分の課金は **$2.66**（移行前の稼働分）。以降は発生しない見込み。
+
 - [ ] `TASK-048` ward-minutes-rag の検索にスコア閾値を設ける（該当制度が無い質問でも常に上位5件返すため、無関係な制度が回答に混ざる）
 - [ ] `TASK-049` ward-minutes-rag の出典セクションを、回答本文で実際に引用されたタグ（[S1] 等）に絞り込む
 - [ ] `TASK-050` Ex-Appのコールドスタート対策を検討する。ward-minutes-rag はコンテナ入れ替え直後に17秒かかった実測があり、**源内の29秒タイムアウト**に対する余裕が小さい（通常時は6〜7秒）
@@ -181,4 +187,4 @@
 
 ## 次に使うID
 
-`TASK-051`
+`TASK-052`

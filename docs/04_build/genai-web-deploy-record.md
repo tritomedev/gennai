@@ -176,3 +176,24 @@ npm -w packages/cdk run cdk -- deploy --all --require-approval never \
 - [ ] Lambdaメモリ512MB上限の緩和申請（現在は CDK Aspect でキャップして回避中）
 - [ ] Budgets アラートの設定（新アカウントには未設定）
 - [ ] 旧アカウント <OLD_AWS_ACCOUNT_ID> のスタック撤去をどうするか判断
+
+
+---
+
+## 旧アカウントの撤去（2026-08-25 / TASK-051）
+
+新アカウントへの移行完了に伴い、旧アカウント `<OLD_AWS_ACCOUNT_ID>` のリソースを削除した。
+
+```bash
+npm -w packages/cdk run cdk -- destroy --all --force -c env=-selfHostingDev --profile default
+```
+
+削除後の実測（すべて0件）：CloudFront / Lambda / DynamoDB / Cognito UserPool / 源内関連のS3バケット。
+
+**`RemovalPolicy.RETAIN` のリソースが残ると想定していたが、残骸は出なかった。**
+中身の入ったS3バケットが5つあり手動で空にする必要があると見込んでいたが、CDK側が処理した。
+
+`CDKToolkit`（ap-northeast-1 / us-east-1）は意図的に残している（アセット用S3に57オブジェクト、月数円）。
+完全撤収する場合は、バケットを空にしてからスタックを削除する必要がある。
+
+旧アカウントの2026年8月分の課金は **$2.66**（移行前の稼働分）。
